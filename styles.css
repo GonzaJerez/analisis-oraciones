@@ -1,0 +1,92 @@
+body{
+    background-color: darkgray;
+    font-family: system-ui;
+    display: grid;
+    grid-template-columns: 15% 1fr;
+}
+*{
+    font-family: system-ui;
+}
+
+#menu{
+    width: 15%;
+    min-height: 100vh;
+}
+
+#container{
+    width: 80%;
+    min-height: 750px;
+    background-color: white;
+    margin: auto;
+    box-shadow: 0px 0px 25px gray;
+    display: grid;
+    grid-template-rows: 15% 1fr;
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 20px;
+}
+
+#container form{
+    margin-top: 30px;
+}
+
+
+#container article{
+    height: 50px;
+    /* display: grid; */
+    /* grid-template-rows: 1fr 1fr; */
+    /* grid-template-columns: 1fr; */
+    padding-left: 50px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    text-align: start;
+    width: auto;
+}
+
+#input{
+    width: 50%;
+    height: 30px;
+    outline: none;
+    border: 1px solid #e8e8e8;
+}
+
+#button{
+    background: #e8e8e8;
+    border: none;
+    height: 30px;
+    margin-left: 15px;
+    color: #131313;
+}
+
+.sentences{
+    border:none;
+    background-color: transparent;
+    color: black;
+    width: 100%;
+    /* text-align: center; */
+    
+}
+
+#container section span{
+    width: 75px;
+    height: 3px;
+    border: 1px solid black;
+    border-top: transparent;
+    position: absolute;
+    /* margin-top: 35px; */
+    /* margin-left: -72px; */
+    font-size: 12px;
+    line-height: 22px;
+    text-align: center;
+    /* width: ; */
+}
+
+.segundosElementos{
+    height: 20px !important;
+    line-height: 55px !important;
+}
+
+.tercerosElementos{
+    height: 40px !important;
+    line-height: 100px !important;
+}
