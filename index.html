@@ -6,37 +6,244 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
     <script defer src="./main.js"></script>
+    <script defer src="./styles.js"></script>
     <title>Analisis sintactico</title>
 </head>
 <body>
 
     <nav id="menu">
-        <ul>
-            <li><button class="insertar">Sujeto</button></li>
-            <li><button class="insertar">Predicado</button></li>
-            <li><button class="insertar">Verbo</button></li>
-            <li><button class="insertar">Circunstancial</button></li>
-            <li><button class="insertar">Objeto directo</button></li>
-            <li><button class="insertar">Objeto indirecto</button></li>
+        <div id="parteVisible">
+            <button id="botonMenu" class="haciendo-focus-menu">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+            </button>
+            <button id="mostrarTutorial" title="Ver tutorial nuevamente">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-play" viewBox="0 0 16 16">
+                    <path d="M6 6.883v4.234a.5.5 0 0 0 .757.429l3.528-2.117a.5.5 0 0 0 0-.858L6.757 6.454a.5.5 0 0 0-.757.43z"/>
+                    <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                </svg>
+            </button>
+        </div>
+
+        <ul id="parteOculta" class="menu-visible">
+            <h4>MENU</h4>
+            <li>
+                <hr>
+                <button type="button" id="mostrarListaElementos" class="haciendo-focus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-sliders" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
+                      </svg>
+                    Lista elementos 
+                    <span class="girar-icono">▼</span>
+                </button>
+                
+                <ul id="listaElementos" class="lista-elementos-visible lista-interna" style="height: 0px;">
+                    <li><button class="insertar">Sujeto</button><span class="cancelar elemento0">v</span></li>
+                    <li><button class="insertar">Predicado</button><span class="cancelar elemento1">v</span></li>
+                    <li><button class="insertar">Verbo</button><span class="cancelar elemento2">v</span></li>
+                    <li><button class="insertar">Circunstancial</button><span class="cancelar elemento3">v</span></li>
+                    <li><button class="insertar">Objeto directo</button><span class="cancelar elemento4">v</span></li>
+                    <li><button class="insertar">Objeto indirecto</button><span class="cancelar elemento5">v</span></li>
+                </ul>
+            </li>
+            
+            <li>
+                <hr>
+                <button type="button" id="botonDiccionarioGriego">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-type" viewBox="0 0 16 16">
+                        <path d="m2.244 13.081.943-2.803H6.66l.944 2.803H8.86L5.54 3.75H4.322L1 13.081h1.244zm2.7-7.923L6.34 9.314H3.51l1.4-4.156h.034zm9.146 7.027h.035v.896h1.128V8.125c0-1.51-1.114-2.345-2.646-2.345-1.736 0-2.59.916-2.666 2.174h1.108c.068-.718.595-1.19 1.517-1.19.971 0 1.518.52 1.518 1.464v.731H12.19c-1.647.007-2.522.8-2.522 2.058 0 1.319.957 2.18 2.345 2.18 1.06 0 1.716-.43 2.078-1.011zm-1.763.035c-.752 0-1.456-.397-1.456-1.244 0-.65.424-1.115 1.408-1.115h1.805v.834c0 .896-.752 1.525-1.757 1.525z"/>
+                      </svg>
+                    Diccionario griego 
+                    <span>▼</span>
+                </button>
+                
+                <ul id="diccionarioGriego" class="lista-interna">
+                    <li>
+                        <ul class="fila">
+                            <li class="letra-griega">Α</li>
+                            <li class="letra-griega">α</li>
+                            <li class="letra-griega">Β</li>
+                            <li class="letra-griega">β</li>
+                            <li class="letra-griega">Γ</li>
+                            <li class="letra-griega">γ</li>
+                            <li class="letra-griega">Δ</li>
+                            <li class="letra-griega">δ</li>
+                            <li class="letra-griega">Ε</li>
+                            <li class="letra-griega">ε</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="fila">
+                            <li class="letra-griega">Ζ</li>
+                            <li class="letra-griega">ζ</li>
+                            <li class="letra-griega">Η</li>
+                            <li class="letra-griega">η</li>
+                            <li class="letra-griega">Θ</li>
+                            <li class="letra-griega">θ</li>
+                            <li class="letra-griega">Ι</li>
+                            <li class="letra-griega">ι</li>
+                            <li class="letra-griega">Κ</li>
+                            <li class="letra-griega">κ</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="fila">
+                            <li class="letra-griega">Λ</li>
+                            <li class="letra-griega">λ</li>
+                            <li class="letra-griega">Μ</li>
+                            <li class="letra-griega">μ</li>
+                            <li class="letra-griega">Ν</li>
+                            <li class="letra-griega">ν</li>
+                            <li class="letra-griega">Ξ</li>
+                            <li class="letra-griega">ξ</li>
+                            <li class="letra-griega">Ο</li>
+                            <li class="letra-griega">ο</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="fila">
+                            <li class="letra-griega">Π</li>
+                            <li class="letra-griega">π</li>
+                            <li class="letra-griega">Ρ</li>
+                            <li class="letra-griega">ρ</li>
+                            <li class="letra-griega">Σ</li>
+                            <li class="letra-griega">σ</li>
+                            <li class="letra-griega">ς</li>
+                            <li class="letra-griega">Τ</li>
+                            <li class="letra-griega">τ</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="fila">
+                            <li class="letra-griega">Υ</li>
+                            <li class="letra-griega">υ</li>
+                            <li class="letra-griega">Φ</li>
+                            <li class="letra-griega">φ</li>
+                            <li class="letra-griega">Χ</li>
+                            <li class="letra-griega">χ</li>
+                            <li class="letra-griega">Ψ</li>
+                            <li class="letra-griega">ψ</li>
+                            <li class="letra-griega">Ω</li>
+                            <li class="letra-griega">ω</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <ul class="fila">
+                            <li class="signos">´</li>
+                            <li class="signos">`</li>
+                            <li class="signos">¨</li>
+                            <li class="signos">^</li>
+                            <li class="signos">~</li>
+                            <li class="signos">'</li>
+                            <li class="signos">°</li>
+                        </ul>
+                    </li>
+                    
+                    
+                </ul>
+                <hr>
+            </li>
+            <li>
+                <button type="button" id="eliminar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                      </svg>
+                    Eliminar
+                    <span>▼</span>
+                </button>
+                <ul id="listaEliminar" class="lista-interna">
+                    <li><button id="eliminarOracion">Eliminar oracion</button><span class="cancelar elemento0">v</span></li>
+                    <li><button id="eliminarElementos">Eliminar elemento</button><span class="cancelar elemento0">v</span></li>
+                    <li><button id="eliminarTodo">Eliminar todo</button><span class="cancelar elemento0">v</span></li>
+                </ul>
+                <hr>
+            </li>
+
+            <li>
+                <button type="button" id="botonGuardar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
+                        <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                        <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+                      </svg>
+                    Guardar
+                    <span>▼</span>
+                </button>
+                <ul id="guardarpdf" class="lista-interna">
+                    <li>
+                        <a href="./hoja1.html" id="guardarComoPdf" target="_blank">Guardar como PDF</a>
+                        <span id="iconoInfo">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                          </svg>
+                        </span>
+                        <img id="imgInfo" src="./info-pdf1.png">
+                    </li>
+                </ul>
+            </li>
+            <hr>
+            
         </ul>
+        
+        
     </nav>
+    <div></div>
 
     <div id="container">
         <form>
-            <input type="text" id="input">
+            <input type="text" id="input" required>
             <input type="submit" id="button" value="Analizar" onsubmit="false">
         </form>
         <section>
-           <!--  <article>
-                <input type="text" disabled="disabled" class="sentences" value="Oracion de prueba por ahora">
-            </article>
-            <article>
-                <input type="text" disabled="disabled" class="sentences" value="Le reproche al autor del libro su pesimismo">
-            </article> -->
+            <ol id="lista">
+                <!-- aca se van agregando las oraciones -->
+
+            </ol>
          </section>
     </div>
 
-   
+   <div id="fondoOscuro">
+       <!-- <button id="cerrarTutorial">
+           x
+       </button> -->
+        <div class="tutorial muestra-insertarOracion">
+            <h4>Insertar nuevas oraciones<button class="cerrarTutorial" title="Cerrar tutorial">x</button></h4>
+            <p>Escribir la oracion que se quiere estudiar y presionar "Analizar" para agregarla a la hoja.</p>
+            <button>Siguiente</button>
+        </div>
+
+        <div class="tutorial muestra-hojaEstudio">
+            <h4>Hoja de estudio</h4>
+            <p>Aca se van insertando las oraciones y los elementos de analisis.</p>
+            <button>Finalizar</button>
+        </div>
+
+        <div class="tutorial muestra-listaElementos">
+            <h4>Insertar elementos<button class="cerrarTutorial" title="Cerrar tutorial">x</button></h4>
+            <p>Primero escoja el elemento a insertar, y luego seleccione el fragmento de la oracion donde desea agregarlo.</p>
+            <button>Siguiente</button>
+        </div>
+
+        <div class="tutorial muestra-diccionarioGriego">
+            <h4>Diccionario Griego<button class="cerrarTutorial" title="Cerrar tutorial">x</button></h4>
+            <p>Al seleccionar las letras estas se van insertando en la barra superior para poder agregarlas a la hoja.</p>
+            <button>Siguiente</button>
+        </div>
+
+        <div class="tutorial muestra-eliminar">
+            <h4>Eliminar<button class="cerrarTutorial" title="Cerrar tutorial">x</button></h4>
+            <p>En esta seccion puede eliminar algun elemento en particular u oraciones completas.</p>
+            <button>Siguiente</button>
+        </div>
+
+        <div class="tutorial muestra-guardar">
+            <h4>Guardar<button class="cerrarTutorial" title="Cerrar tutorial">x</button></h4>
+            <p>Puede guardar la hoja de estudio en formato PDF. Revisar que las propiedades de guardaro esten ajustadas correctamente (comparar con imagen).</p>
+            <button>Siguiente</button>
+        </div>
+   </div>
     
 </body>
 </html>

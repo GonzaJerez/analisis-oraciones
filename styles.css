@@ -1,69 +1,377 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("./roboto.woff2");
+  }
+
 body{
     background-color: darkgray;
-    font-family: system-ui;
     display: grid;
-    grid-template-columns: 15% 1fr;
+    grid-template-columns: 19% 1fr;
+    margin: 0px;
 }
 *{
-    font-family: system-ui;
+    font-family: 'Roboto';
+    padding: 0px;
+    margin: 0px;
+    /* box-sizing: border-box ; */
+    text-decoration: none;
 }
 
 #menu{
-    width: 15%;
     min-height: 100vh;
+    display: grid;
+    grid-template-columns: 21% 1fr;
+    margin: 0px;
+    position: fixed;
+    width: 260px;
+}
+#menu *{
+    color: #e0e0e0;
+    font-weight: 400;
+    list-style: none;
+}
+
+#menu button{
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+
+#parteVisible{
+    background-color: #1a1a1a;
+    text-align: center;
+    width: 55px;
+}
+
+#botonMenu,
+#mostrarTutorial{
+    height: 50px;
+    background-color: transparent;
+    width: 100%;
+    border: none;
+}
+
+#botonMenu:hover,
+#mostrarTutorial:hover{
+    background-color: #343434;
+}
+
+.haciendo-focus-menu{
+    background-color: #343434 !important;
+}
+
+#parteOculta{
+    width: 0px;
+    overflow: hidden;
+    transition: all 200ms;
+    background-color: #343434e8;
+    box-shadow: 3px 0px 5px grey;
+}
+
+#parteOculta h4{
+    font-size: 20px;
+    margin: 14px 0px 0px 10px;
+    letter-spacing: 2px;
+}
+
+
+#parteOculta > li:first-of-type{
+    margin-top: 10px;
+}
+
+#parteOculta li button{
+    text-align: start;
+    padding: 1px 11px;
+    /* display: flex; */
+    width: 90%;
+    float: left;
+    justify-content: space-between;
+}
+
+.lista-interna{
+    background-color: #353535;
+    box-shadow: 0px 0px 1px #1a1a1a inset;
+}
+
+#parteOculta li ul li span{
+    display: flex;
+    color: #e0e0e0;
+    transition: all 300ms;
+    cursor: pointer;
+    transform: rotate(-90deg);
+    font-size: 10px;
+}
+
+
+.cancelarVisible{
+    color: rgb(62, 62, 62) !important;
+    font-size: 14px !important;
+}
+
+.elementoSeleccionado{
+    color: rgb(62, 62, 62) !important;
+    font-weight: 600 !important;
+}
+.fondoElementoSeleccionado{
+    background-color: rgb(224, 224, 224) !important;
+    border-radius: 15px !important; 
+}
+
+#parteOculta > li > button{
+    padding: 10px 11px;
+    width: 100%;
+    font-size: 14px;
+}
+
+#parteOculta > li > button > svg{
+    margin-right: 5px;
+}
+
+#parteOculta li button span{
+    font-size: 8px;
+    line-height: 200%;
+    float: right;
+    transform: rotate(-90deg);
+}
+
+#parteOculta hr{
+    border: 1px solid #4949495c;
+}
+
+.menu-visible{
+    width: 100% !important;
+}
+
+#mostrarListaElementos{
+    border: none;
+    background-color: transparent;
+}
+
+#listaElementos{
+    height: 0px;
+    overflow: hidden;
+    transition: all 200ms;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    /* background-color: #353535;
+    box-shadow: 0px 0px 1px #1a1a1a inset; */
+}
+
+#listaElementos li{
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+}
+
+#parteOculta li button:hover,
+#listaElementos li button:hover{
+    color: #fff;
+}
+
+.lista-elementos-visible{
+    height: 170px !important;
+    padding: 10px 15px !important;
+}
+
+.insertar{
+    border: none;
+    background-color: transparent;
+}
+
+
+#botonDiccionarioGriego{
+    border: none;
+    background-color: transparent;
+}
+
+#diccionarioGriego{
+    display: flex;
+    flex-direction: column;
+    height: 0px;
+    overflow: hidden;
+    transition: all 200ms;
+    margin-left: -1px;  
+    /* background-color: #353535;
+    box-shadow: 0px 0px 1px #1a1a1a inset; */
+}
+
+#diccionarioGriego .fila{
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+#diccionarioGriego .fila li{
+    text-align: center;
+    font-size: 16px;
+    padding: 2px;
+    cursor: pointer;
+}
+
+.mostrar-diccionario-griego{
+    height: 155px !important;
+    margin-top: 10px;
+    padding: 10px 5px;
+}
+#diccionarioGriego .fila li:hover{
+    /* border: 1px solid rgba(204, 204, 204, 21%); */
+    text-decoration: underline;
+    color: #fff;
+}
+
+.haciendo-focus{
+    color: #fff !important;
+}
+
+.girar-icono{
+    transform: rotate(0deg) !important;
+}
+
+#listaEliminar{
+    height: 0px;
+    overflow: hidden;
+    transition: all 200ms;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#listaEliminar li{
+    display: flex;
+    align-items: center;
+}
+
+.eliminar-visible{
+    height: 94px !important;
+    padding: 10px !important;
+}
+
+#eliminarItems button{
+    text-align: start;
+    padding: 1px 11px;
+    width: 90%;
+    float: left;
+    justify-content: space-between;
+}
+
+#guardarpdf{
+    height: 0px;
+    overflow: hidden;
+    transition: all 200ms;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-guardar-visible{
+    height: 40px !important;
+    padding: 10px !important;
+}
+
+#guardarComoPdf{
+    font-size: 13px;
+    float: left;
+}
+
+#iconoInfo{
+    float: right;
+    transform: rotate(0deg) !important;
+    cursor: help !important;
+}
+
+#guardarComoPdf:hover{
+    cursor: pointer;
+}
+
+#imgInfo{
+    position: absolute;
+    width: 700px;
+    height: 400px;
+    left: 299px;
+    margin-top: -100px;
+    transition: all 300ms;
+    display: none;
+    z-index: 3;
+    border: 10px solid #3e3e3e;
+    border-radius: 2px;
+    box-shadow: 0px 0px 25px #ccc;
 }
 
 #container{
-    width: 80%;
+    width: 95%;
     min-height: 750px;
-    background-color: white;
     margin: auto;
-    box-shadow: 0px 0px 25px gray;
     display: grid;
-    grid-template-rows: 15% 1fr;
+    grid-template-rows: 7% 1fr;
     grid-template-columns: 1fr;
     text-align: center;
     gap: 20px;
+    /* z-index: -1; */
 }
 
 #container form{
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
+#container section{
+    padding: 0px 30px;
+    background-color: white;
+    box-shadow: 0px 0px 25px gray;
+    min-height: 100vh;
+}
+
+::marker{
+    font-size: 13px;
+}
 
 #container article{
     height: 50px;
-    /* display: grid; */
-    /* grid-template-rows: 1fr 1fr; */
-    /* grid-template-columns: 1fr; */
-    padding-left: 50px;
     margin-top: 20px;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
     text-align: start;
     width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
 }
 
 #input{
-    width: 50%;
+    width: 80%;
     height: 30px;
     outline: none;
-    border: 1px solid #e8e8e8;
+    border: 1px solid #9C9C9C;
+    box-shadow: 0px 1px 2px rgb(123 123 123 / 25%) inset;
+    padding: 5px;
 }
 
 #button{
-    background: #e8e8e8;
-    border: none;
+    background: #343434e8;
+    border: 1px solid #1a1a1a;
+    box-shadow: 1px 1px 4px rgb(0 0 0 / 25%);
+    border-radius: 10px;
     height: 30px;
     margin-left: 15px;
-    color: #131313;
+    color: #e0e0e0;
+    width: 70px;
+}
+
+#button:hover{
+    cursor: pointer;
+    color: #fff;
+    font-weight: 400;
+    box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
 }
 
 .sentences{
     border:none;
     background-color: transparent;
     color: black;
-    width: 100%;
+    width: 95%;
     /* text-align: center; */
+    padding-top: 4px;
     
 }
 
@@ -73,20 +381,164 @@ body{
     border: 1px solid black;
     border-top: transparent;
     position: absolute;
-    /* margin-top: 35px; */
+    margin-top: 20px;
     /* margin-left: -72px; */
     font-size: 12px;
     line-height: 22px;
     text-align: center;
     /* width: ; */
+    z-index: 3;
 }
 
 .segundosElementos{
     height: 20px !important;
     line-height: 55px !important;
+    z-index: 2 !important;
 }
 
 .tercerosElementos{
     height: 40px !important;
     line-height: 100px !important;
+    z-index: 1 !important;
+}
+
+.boton-eliminarOracion{
+    background-color: transparent;
+    border: 0px;
+    transition: all 200ms;
+    font-size: 15px;
+    padding-top: 4px;
+    display: none;
+    animation: parpadeo 1s infinite linear;
+}
+
+@keyframes parpadeo{
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.4);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+.boton-eliminarOracion:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.boton-eliminarElemento{
+    background: transparent;
+    width: 14px;
+    line-height: 13px;
+    border: 0px;
+    font-size: 16px;
+    z-index: 2;
+    animation: parpadeo 1s infinite linear;
+    display: none;
+}
+
+.boton-eliminarElemento:hover{
+    cursor: pointer;
+}
+
+#fondoOscuro{
+    position: fixed;
+    z-index: 2;
+    min-width: 100%;
+    min-height: 100vh;
+    background-color: rgba(31, 31, 31, 0.308);
+    display: none;
+}
+
+#fondoOscuro .tutorial{
+    width: 250px;
+    height: auto;
+    background-color: #e8e8e8;
+    position: absolute;
+    border-radius: 5px;
+    z-index: -2;
+    opacity: 0;
+    display: none;
+    /* z-index: 5; */
+    transition: all 400ms;
+}
+
+#fondoOscuro .cerrarTutorial{
+    border: none;
+    background-color: transparent;
+    font-size: 13px;
+    color: #dedede;
+    cursor: pointer;
+    padding: 0px;
+    padding-right: 5px;
+    line-height: 18px;
+    float: right;
+}
+
+#fondoOscuro .tutorial h4{
+    text-align: center;
+    background-color: #0d6efd;
+    color: #f1f1f1;
+    font-weight: 400;
+    padding: 5px;
+    border-radius: 5px 5px 0 0;
+}
+
+#fondoOscuro .tutorial p{
+    color: #1a1a1a;
+    font-size: 13px;
+    padding: 15px 15px 5px 15px;
+    text-align: center;
+}
+
+#fondoOscuro .tutorial > button{
+    font-size: 10px;
+    display: flex;
+    float: right;
+    padding: 0px 10px 10px 10px;
+    cursor: pointer;
+    border: none;
+    color: #0d6efd;
+}
+
+#fondoOscuro .tutorial button:hover{
+    text-decoration: underline;
+}
+
+#fondoOscuro .tutorial hr{
+    border: 1px solid #4949495c;
+}
+
+#fondoOscuro .muestra-insertarOracion{
+    left: 78%;
+    top: 80px;
+}
+
+#fondoOscuro .muestra-hojaEstudio{
+    left: 78%;
+    top: 200px;
+}
+
+#fondoOscuro .muestra-listaElementos{
+    left: 20%;
+    top: 80px;
+}
+
+#fondoOscuro .muestra-diccionarioGriego{
+    left: 20%;
+    top: 120px;
+}
+
+#fondoOscuro .muestra-eliminar{
+    left: 20%;
+    top: 160px;
+}
+
+#fondoOscuro .muestra-guardar{
+    left: 20%;
+    top: 200px;
 }
