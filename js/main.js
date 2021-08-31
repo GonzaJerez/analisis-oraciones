@@ -115,7 +115,7 @@ button.addEventListener('click',(e)=>{;
         arrayOraciones.push(oracionNueva);
         localStorage.setItem('oraciones', JSON.stringify(arrayOraciones)) 
         input.value= '';
-        mostrarOraciones()    
+        mostrarOraciones()
     }else{
         alert('Ingresar oracion valida...')
     }
@@ -315,28 +315,24 @@ const borrarElemento = ()=>{
 
 /* _______________ ELIMINAR TODO _______________ */
 
-const borrarTodo = ()=>{
-    window.confirm();
-    // arrayOraciones = [];
-    // localStorage.setItem('oraciones', JSON.stringify(arrayOraciones));
-    // mostrarOraciones();
-}
-
-document.querySelector('#eliminarTodo').addEventListener('click',()=>{
-    let borrarTodo;
-    setTimeout(()=>{
-        borrarTodo = window.confirm('Seguro que deseas eliminar todo? Los cambios no descargados se perderan.');
-        if (borrarTodo == true) {
-            arrayOraciones = [];
-            localStorage.setItem('oraciones', JSON.stringify(arrayOraciones));
-            mostrarOraciones();
-        }
+if (body.firstElementChild != container ) {
+    
+    document.querySelector('#eliminarTodo').addEventListener('click',()=>{
+        let borrarTodo;
         setTimeout(()=>{
-            cancelarSeleccionEliminar();
-            cantidadOraciones = arrayOraciones.length;
-        },10);
-    },10)
-})
+            borrarTodo = window.confirm('Seguro que deseas eliminar todo? Los cambios no descargados se perderan.');
+            if (borrarTodo == true) {
+                arrayOraciones = [];
+                localStorage.setItem('oraciones', JSON.stringify(arrayOraciones));
+                mostrarOraciones();
+            }
+            setTimeout(()=>{
+                cancelarSeleccionEliminar();
+                cantidadOraciones = arrayOraciones.length;
+            },10);
+        },10)
+    })
+}
 
 const cancelarSeleccion = ()=>{
     botonInsertarElementos.forEach(e=>{
