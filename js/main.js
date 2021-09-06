@@ -1,7 +1,6 @@
 'use strict'
 
 const section= document.querySelector('#container section');
-// const article = document.querySelector('#container section article')
 const input = document.querySelector('#input');
 const button = document.querySelector('#button');
 const botonInsertarElementos = document.querySelectorAll('.insertar');
@@ -28,10 +27,10 @@ const cancelarElemento = document.querySelectorAll('.cancelar')
 // ________ Muestra en pantalla todas las oraciones y elementos almacenados en "arrayOraciones" (por lo tanto tambien en el localStorage)_______
 const mostrarOraciones= ()=>{
 
-/* borra todo lo q haya en pantalla (parte oraciones) */
+    /* borra todo lo q haya en pantalla (parte oraciones) */
     ol.innerHTML = '';
     margenesDeElementos();
-/* recorre array general y va creando elementos html por cada oracion q haya creada */
+    /* recorre array general y va creando elementos html por cada oracion q haya creada */
     arrayOraciones.forEach(element=>{
         let li = document.createElement('LI');
         let article = document.createElement('ARTICLE');
@@ -54,13 +53,12 @@ const mostrarOraciones= ()=>{
         section.appendChild(ol);
         
 
-/* si hay elementos ya creados en la oracion q esta recorriendo, recorre "elementos" de array general y va creando elementos html por cada elemento q haya creado */
+        /* si hay elementos ya creados en la oracion q esta recorriendo, recorre "elementos" de array general y va creando elementos html por cada elemento q haya creado */
         if (element.elementos != undefined) {
 
             element.elementos.forEach(index=>{
                 let span = document.createElement('SPAN');
                 let botonEliminarSpan= document.createElement('button')
-                // botonEliminarSpan.style.width= '3px'
                 botonEliminarSpan.textContent= 'x';
                 botonEliminarSpan.classList.add('boton-eliminarElemento');
                 let arranque;
@@ -69,7 +67,7 @@ const mostrarOraciones= ()=>{
                 if (body.firstElementChild != container ) {
                     span.style.left= `${index.pixelesInicio}px`;
                 }else{
-                    span.style.left= `${index.pixelesInicio-window.screen.availWidth*0.205-5}px`;
+                    span.style.left= `${index.pixelesInicio-window.screen.availWidth*0.197-5}px`;
                 }
                 span.textContent= index.elemento;
                 span.setAttribute('id',index.elemento + element.oracion);
@@ -86,18 +84,15 @@ const mostrarOraciones= ()=>{
         }
 
     })
-/* actualiza la variable "oracionesEnPantalla" para q almacene todas las oraciones q existan ahora y llama a las funciones q permiten seleccionar parte de oraciones
+    /* actualiza la variable "oracionesEnPantalla" para q almacene todas las oraciones q existan ahora y llama a las funciones q permiten seleccionar parte de oraciones
     y borrar oraciones (las activa, porque recien cuando termina esta funcion aparecen los elementos q usan esas funciones) */
     oracionesEnPantalla = document.querySelectorAll('.sentences')
     botonesEliminarOracion = document.querySelectorAll('.boton-eliminarOracion')
     botonesEliminarElemento = document.querySelectorAll('.boton-eliminarElemento')
-    // seleccionarParteOraciones();
     borrarOracion();
     borrarElemento();
     
 }
-
-
 
 
 
@@ -224,7 +219,6 @@ const insertarElementos = ()=>{
     /* vuelve a dejar activa la funcion de seleccionar texto cuando haga click en elemento a agregar */
     botonElementoApretado= true
 
-    // element.setAttribute('disabled', 'disabled')
     mostrarOraciones();
     cancelarSeleccion();
 
@@ -297,11 +291,10 @@ const borrarElemento = ()=>{
         element.addEventListener('click',e=>{
             let elementoAEliminar = element.parentElement.textContent.substr(0,element.parentElement.textContent.length-1)
             let indiceElementoAEliminar = element.parentElement.getAttribute('id').substr(elementoAEliminar.length)
-            // let elementoEliminado;
 
             for(let i in arrayOraciones[indiceElementoAEliminar].elementos){
                 if(arrayOraciones[indiceElementoAEliminar].elementos[i].elemento == elementoAEliminar){
-                    /* elementoEliminado =  */arrayOraciones[indiceElementoAEliminar].elementos.splice(i,1)[0];
+                    arrayOraciones[indiceElementoAEliminar].elementos.splice(i,1)[0];
                 };
             }
 
@@ -314,7 +307,8 @@ const borrarElemento = ()=>{
 }
 
 /* _______________ ELIMINAR TODO _______________ */
-
+/* elimina todas las oraciones y elementos que existan */
+/* virifico que exista el menu, si no existe es porque esta en la "hoja1" asi que no deberia buscar el elemento "#eliminarTodo" */
 if (body.firstElementChild != container ) {
     
     document.querySelector('#eliminarTodo').addEventListener('click',()=>{
@@ -334,6 +328,8 @@ if (body.firstElementChild != container ) {
     })
 }
 
+ //ELIMINA ESTILOS DE ITEM SELECCIONADO EN MENU "LISTA ELEMENTOS"
+/* vuelve a los estilos por defecto */
 const cancelarSeleccion = ()=>{
     botonInsertarElementos.forEach(e=>{
         e.classList.remove('elementoSeleccionado');
@@ -343,30 +339,24 @@ const cancelarSeleccion = ()=>{
     })
 }
 
+/* CAPTURA CUANDO HAGO CLICK EN "X" PARA DESELECCIONAR ITEM */
 cancelarElemento.forEach(e=>{
-
     e.addEventListener('click',cancelarSeleccion)
 })
 
 
-
-let signoAlmacenado= '';
-const signoGriego = document.querySelectorAll('.signos');
-signoGriego.forEach(e=>{
-    e.addEventListener('click',()=>{
-        signoAlmacenado = e.textContent;
-    })
-})
-
-
+// CAPTURA CUANDO SELECCIONO ALGUNA LETRA EN DICCIONARIO GRIEGO
+/* si previamente se selecciono un signo se fusiona con esta letra***** */
 letraGriega.forEach(e=>{
     e.addEventListener('click',()=>{
-        if (signoAlmacenado == '') {
-            input.value+= e.textContent;
-        }else{
-            input.value+=(signoAlmacenado+e.textContent);
-        }
-        signoAlmacenado='';
+        input.value+= e.textContent;
+    });
+})
+const caracterEspecial = document.querySelectorAll('.caracter-especial');
+
+caracterEspecial.forEach(e=>{
+    e.addEventListener('click',()=>{
+        input.value+= e.textContent;
     });
 })
 

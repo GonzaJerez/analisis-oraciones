@@ -13,9 +13,10 @@ body{
     font-family: 'Roboto';
     padding: 0px;
     margin: 0px;
-    /* box-sizing: border-box ; */
     text-decoration: none;
 }
+
+/* __________________ MENU ____________________ */
 
 #menu{
     min-height: 100vh;
@@ -25,6 +26,7 @@ body{
     position: fixed;
     width: 260px;
 }
+
 #menu *{
     color: #e0e0e0;
     font-weight: 400;
@@ -37,6 +39,7 @@ body{
     border: none;
 }
 
+/*  PARTE VISIBLE  */
 
 #parteVisible{
     background-color: #1a1a1a;
@@ -61,6 +64,8 @@ body{
     background-color: #343434 !important;
 }
 
+/*  PARTE OCULTA  */
+
 #parteOculta{
     width: 0px;
     overflow: hidden;
@@ -75,7 +80,6 @@ body{
     letter-spacing: 2px;
 }
 
-
 #parteOculta > li:first-of-type{
     margin-top: 10px;
 }
@@ -83,7 +87,6 @@ body{
 #parteOculta li button{
     text-align: start;
     padding: 1px 11px;
-    /* display: flex; */
     width: 90%;
     float: left;
     justify-content: space-between;
@@ -97,7 +100,7 @@ body{
 #parteOculta li ul li span{
     display: flex;
     color: #e0e0e0;
-    transition: all 300ms;
+    transition: all 200ms;
     cursor: pointer;
     transform: rotate(-90deg);
     font-size: 10px;
@@ -155,8 +158,6 @@ body{
     padding-left: 10px;
     display: flex;
     flex-direction: column;
-    /* background-color: #353535;
-    box-shadow: 0px 0px 1px #1a1a1a inset; */
 }
 
 #listaElementos li{
@@ -171,13 +172,42 @@ body{
 }
 
 .lista-elementos-visible{
-    height: 150px !important;
+    height: 220px !important;
     padding: 10px 15px !important;
+}
+
+.tambien-circunstanciales{
+    height: 320px !important;
 }
 
 .insertar{
     border: none;
     background-color: transparent;
+}
+
+#parteOculta #botonCircunstanciales{
+    width: 100%;
+}
+
+#listaCircunstanciales{
+    height: 0px;
+    overflow: hidden;
+    transition: all 200ms;
+    padding-left: 10px;
+    width: 90%;
+}
+
+.mostrar-circunstanciales{
+    height: 100px !important;
+}
+
+#listaCircunstanciales li{
+    width: 100%;
+}
+
+#liCircunstancial{
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -192,15 +222,12 @@ body{
     height: 0px;
     overflow: hidden;
     transition: all 200ms;
-    margin-left: -1px;  
-    /* background-color: #353535;
-    box-shadow: 0px 0px 1px #1a1a1a inset; */
+    margin-left: -1px;
 }
 
 #diccionarioGriego .fila{
     display: flex;
     justify-content: space-around;
-    
 }
 
 #diccionarioGriego .fila li{
@@ -211,14 +238,113 @@ body{
 }
 
 .mostrar-diccionario-griego{
-    height: 140px !important;
+    height: 120px !important;
     margin-top: 10px;
     padding: 10px 5px;
 }
-#diccionarioGriego .fila li:hover{
-    /* border: 1px solid rgba(204, 204, 204, 21%); */
+
+.letra-griega:hover{
     text-decoration: underline;
     color: #fff;
+}
+
+.caracter-especial:hover{
+    text-decoration: underline;
+    color: #fff;
+}
+
+#diccionarioGriego .signos-ocultos{
+    gap: 2px;
+    background-color: #353535;
+    box-shadow: 0px 0px 2px #cecece;
+    padding: 2px;
+}
+
+.ocultar-signos{
+    display: none;
+    position: absolute;
+}
+
+.mostrar-caracteres-especiales{
+    display: block !important;
+}
+
+#signosA{
+    margin-top: -55px;
+}
+
+#signosE{
+    margin-top: -30px;
+    margin-left: 130px;
+}
+
+#signosN{
+    margin-top: -55px;
+}
+
+#signosI{
+    margin-left: 75px;
+    margin-top: -55px;
+}
+
+#signosO{
+    margin-top: -30px;
+    margin-left: 100px;
+}
+
+#signosU{
+    margin-top: -55px;
+    margin-left: -60px;
+}
+
+#signosW{
+    margin-top: -55px;
+    margin-left: 70px;
+}
+
+#signosP{
+    margin-top: -30px;
+    margin-left: -40px;
+}
+
+#signosAMayus{
+    margin-top: -55px;
+    margin-left: -40px;
+}
+
+#signosEMayus{
+    margin-top: -30px;
+    margin-left: 100px;
+}
+
+#signosHMayus{
+    margin-top: -55px;
+    margin-left: -30px;
+}
+
+#signosIMayus{
+    margin-top: -30px;
+    margin-left: 40px;
+}
+
+#signosOMayus{
+    margin-top: -30px;
+    margin-left: 70px;
+}
+
+#signosYMayus{
+    margin-top: -30px;
+    margin-left: -40px;
+}
+
+#signosWMayus{
+    margin-top: -55px;
+    margin-left: 50px;
+}
+
+#signosPMayus{
+    margin-top: -30px;
+    margin-left: -85px;
 }
 
 .haciendo-focus{
@@ -292,7 +418,7 @@ body{
     height: 400px;
     left: 299px;
     margin-top: -100px;
-    transition: all 300ms;
+    transition: all 200ms;
     display: none;
     z-index: 3;
     border: 10px solid #3e3e3e;
@@ -300,16 +426,35 @@ body{
     box-shadow: 0px 0px 25px #ccc;
 }
 
+@media(max-width: 1300px){
+    #menu{
+        width: 230px;
+    } 
+    #parteVisible{
+        width: 48px;
+    }
+}
+@media(max-width: 1150px){
+    #menu{
+        width: 215px;
+    }
+    #parteVisible{
+        width: 45px;
+    }
+}
+
+/* ___________________ CONTAINER ________________________ */
+
 #container{
-    width: 95%;
+    width: 98%;
     min-height: 750px;
     margin: auto;
     display: grid;
-    grid-template-rows: 7% 1fr;
+    grid-template-rows: 80px 1fr;
     grid-template-columns: 1fr;
     text-align: center;
     gap: 20px;
-    /* z-index: -1; */
+    margin-right: 5px;
 }
 
 #container form{
@@ -321,6 +466,7 @@ body{
     background-color: white;
     box-shadow: 0px 0px 25px gray;
     min-height: 100vh;
+    cursor: crosshair;
 }
 
 ::marker{
@@ -345,6 +491,11 @@ body{
     border: 1px solid #9C9C9C;
     box-shadow: 0px 1px 2px rgb(123 123 123 / 25%) inset;
     padding: 5px;
+    transition: all 200ms;
+}
+
+#input:focus{
+    border: 1px solid #3e3e3e
 }
 
 #button{
@@ -370,9 +521,10 @@ body{
     background-color: transparent;
     color: black;
     width: 95%;
-    /* text-align: center; */
     padding-top: 4px;
-    
+    font-size: 15px;
+    letter-spacing: 1px;
+    cursor: text;
 }
 
 #container section span{
@@ -381,12 +533,10 @@ body{
     border: 1px solid black;
     border-top: transparent;
     position: absolute;
-    margin-top: 20px;
-    /* margin-left: -72px; */
-    font-size: 12px;
+    margin-top: 21px;
+    font-size: 9px;
     line-height: 22px;
     text-align: center;
-    /* width: ; */
     z-index: 3;
 }
 
@@ -467,7 +617,6 @@ body{
     z-index: -2;
     opacity: 0;
     display: none;
-    /* z-index: 5; */
     transition: all 400ms;
 }
 

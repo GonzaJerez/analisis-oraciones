@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./styles/logo.jpg">
     <link rel="stylesheet" href="./styles/styles.css">
     <script defer src="./js/main.js"></script>
     <script defer src="./styles/styles.js"></script>
@@ -11,7 +12,10 @@
 </head>
 <body>
 
+    <!-- SECTOR MENU -->
+
     <nav id="menu">
+
         <div id="parteVisible">
             <button id="botonMenu" class="haciendo-focus-menu">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -28,6 +32,7 @@
 
         <ul id="parteOculta" class="menu-visible">
             <h4>MENU</h4>
+
             <li>
                 <hr>
                 <button type="button" id="mostrarListaElementos" class="haciendo-focus">
@@ -42,9 +47,20 @@
                     <li><button class="insertar">Sujeto</button><span class="cancelar elemento0">v</span></li>
                     <li><button class="insertar">Predicado</button><span class="cancelar elemento1">v</span></li>
                     <li><button class="insertar">Verbo</button><span class="cancelar elemento2">v</span></li>
-                    <li><button class="insertar">Circunstancial</button><span class="cancelar elemento3">v</span></li>
-                    <li><button class="insertar">Objeto directo</button><span class="cancelar elemento4">v</span></li>
-                    <li><button class="insertar">Objeto indirecto</button><span class="cancelar elemento5">v</span></li>
+                    <li><button class="insertar">Sustantivo</button><span class="cancelar elemento3">v</span></li>
+                    <li><button class="insertar">Adjetivo</button><span class="cancelar elemento4">v</span></li>
+                    <li><button class="insertar">Articulo</button><span class="cancelar elemento5">v</span></li>
+                    <li id="liCircunstancial">
+                        <button id="botonCircunstanciales">Circunstanciales<span class="">▼</span></button>
+                        <ul id="listaCircunstanciales">
+                            <li><button class="insertar">C. modo</button><span class="cancelar elemento8">v</span></li>
+                            <li><button class="insertar">C. tiempo</button><span class="cancelar elemento9">v</span></li>
+                            <li><button class="insertar">C. lugar</button><span class="cancelar elemento10">v</span></li>
+                            <li><button class="insertar">C. cantidad</button><span class="cancelar elemento11">v</span></li>
+                        </ul>
+                    </li>
+                    <li><button class="insertar">O. directo</button><span class="cancelar elemento6">v</span></li>
+                    <li><button class="insertar">O. indirecto</button><span class="cancelar elemento7">v</span></li>
                 </ul>
             </li>
             
@@ -62,7 +78,65 @@
                     <li>
                         <ul class="fila">
                             <li class="letra-griega">Α</li>
+                            <li id="signosAMayus" class="ocultar-signos">
+                                
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">Ὰ</li>
+                                    <li class="caracter-especial">Ά</li>
+                                    <li class="caracter-especial">Ἀ</li>
+                                    <li class="caracter-especial">ᾈ</li>
+                                    <li class="caracter-especial">Ἂ</li>
+                                    <li class="caracter-especial">ᾊ</li>
+                                    <li class="caracter-especial">Ἄ</li>
+                                    <li class="caracter-especial">ᾌ</li>
+                                    <li class="caracter-especial">Ἆ</li>
+                                    <li class="caracter-especial">ᾎ</li>
+                                </ul>
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">ᾼ</li>
+                                    <li class="caracter-especial">Ἁ</li>
+                                    <li class="caracter-especial">ᾉ</li>
+                                    <li class="caracter-especial">Ἃ</li>
+                                    <li class="caracter-especial">ᾋ</li>
+                                    <li class="caracter-especial">Ἅ</li>
+                                    <li class="caracter-especial">ᾍ</li>
+                                    <li class="caracter-especial">Ἇ</li>
+                                    <li class="caracter-especial">Ᾰ</li>
+                                    <li class="caracter-especial">Ᾱ</li>
+                                </ul>
+                            </li>
                             <li class="letra-griega">α</li>
+                            <li id="signosA" class="ocultar-signos">
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">ὰ</li>
+                                    <li class="caracter-especial">ᾲ</li>
+                                    <li class="caracter-especial">ά</li>
+                                    <li class="caracter-especial">ᾴ</li>
+                                    <li class="caracter-especial">ἀ</li>
+                                    <li class="caracter-especial">ᾀ</li>
+                                    <li class="caracter-especial">ἂ</li>
+                                    <li class="caracter-especial">ᾂ</li>
+                                    <li class="caracter-especial">ἄ</li>
+                                    <li class="caracter-especial">ᾄ</li>
+                                    <li class="caracter-especial">ἆ</li>
+                                    <li class="caracter-especial">ᾆ</li>
+                                    <li class="caracter-especial">ᾳ</li>
+                                </ul>
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">ᾶ</li>
+                                    <li class="caracter-especial">ᾷ</li>
+                                    <li class="caracter-especial">ἁ</li>
+                                    <li class="caracter-especial">ᾁ</li>
+                                    <li class="caracter-especial">ἃ</li>
+                                    <li class="caracter-especial">ᾃ</li>
+                                    <li class="caracter-especial">ἅ</li>
+                                    <li class="caracter-especial">ᾅ</li>
+                                    <li class="caracter-especial">ἇ</li>
+                                    <li class="caracter-especial">ᾇ</li>
+                                    <li class="caracter-especial">ᾰ</li>
+                                    <li class="caracter-especial">ᾱ</li>
+                                </ul>
+                            </li>
                             <li class="letra-griega">Β</li>
                             <li class="letra-griega">β</li>
                             <li class="letra-griega">Γ</li>
@@ -70,7 +144,31 @@
                             <li class="letra-griega">Δ</li>
                             <li class="letra-griega">δ</li>
                             <li class="letra-griega">Ε</li>
+                            <li id="signosEMayus" class="ocultar-signos">
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">Ὲ</li>
+                                    <li class="caracter-especial">Έ</li>
+                                    <li class="caracter-especial">Ἐ</li>
+                                    <li class="caracter-especial">Ἒ</li>
+                                    <li class="caracter-especial">Ἔ</li>
+                                    <li class="caracter-especial">Ἑ</li>
+                                    <li class="caracter-especial">Ἓ</li>
+                                    <li class="caracter-especial">Ἕ</li>
+                                </ul>
+                            </li>
                             <li class="letra-griega">ε</li>
+                            <li id="signosE" class="ocultar-signos">
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">ὲ</li>
+                                    <li class="caracter-especial">έ</li>
+                                    <li class="caracter-especial">ἐ</li>
+                                    <li class="caracter-especial">ἒ</li>
+                                    <li class="caracter-especial">ἔ</li>
+                                    <li class="caracter-especial">ἑ</li>
+                                    <li class="caracter-especial">ἓ</li>
+                                    <li class="caracter-especial">ἕ</li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -78,11 +176,102 @@
                             <li class="letra-griega">Ζ</li>
                             <li class="letra-griega">ζ</li>
                             <li class="letra-griega">Η</li>
+                            <li id="signosHMayus" class="ocultar-signos">
+                                <ul class="fila signos-ocultos">                                
+                                    <li class="caracter-especial">Ὴ</li>
+                                    <li class="caracter-especial">Ή</li>
+                                    <li class="caracter-especial">Ἠ</li>
+                                    <li class="caracter-especial">ᾘ</li>
+                                    <li class="caracter-especial">Ἢ</li>
+                                    <li class="caracter-especial">ᾚ</li>
+                                    <li class="caracter-especial">Ἤ</li>
+                                    <li class="caracter-especial">ᾜ</li>
+                                    <li class="caracter-especial">Ἦ</li>  
+                                </ul>
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">ᾞ</li>
+                                    <li class="caracter-especial">ῌ</li>
+                                    <li class="caracter-especial">Ἡ</li>
+                                    <li class="caracter-especial">ᾙ</li>
+                                    <li class="caracter-especial">Ἣ</li>
+                                    <li class="caracter-especial">ᾛ</li>
+                                    <li class="caracter-especial">Ἥ</li>
+                                    <li class="caracter-especial">ᾝ</li>
+                                </ul>
+                            </li>
                             <li class="letra-griega">η</li>
+                            <li id="signosN" class="ocultar-signos">
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">ὴ</li>
+                                    <li class="caracter-especial">ῂ</li>
+                                    <li class="caracter-especial">ή</li>
+                                    <li class="caracter-especial">ῄ</li>
+                                    <li class="caracter-especial">ἠ</li>
+                                    <li class="caracter-especial">ᾐ</li>
+                                    <li class="caracter-especial">ἢ</li>
+                                    <li class="caracter-especial">ᾒ</li>
+                                    <li class="caracter-especial">ἤ</li>
+                                    <li class="caracter-especial">ᾔ</li>
+                                    <li class="caracter-especial">ἦ</li>
+                                    <li class="caracter-especial">ᾖ</li>
+                                </ul>
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">ῃ</li>
+                                    <li class="caracter-especial">ῆ</li>
+                                    <li class="caracter-especial">ῇ</li>
+                                    <li class="caracter-especial">ἡ</li>
+                                    <li class="caracter-especial">ᾑ</li>
+                                    <li class="caracter-especial">ἣ</li>
+                                    <li class="caracter-especial">ᾓ</li>
+                                    <li class="caracter-especial">ἥ</li>
+                                    <li class="caracter-especial">ᾕ</li>
+                                    <li class="caracter-especial">ἧ</li>
+                                    <li class="caracter-especial">ᾗ</li>
+                                </ul>
+                            </li>
                             <li class="letra-griega">Θ</li>
                             <li class="letra-griega">θ</li>
                             <li class="letra-griega">Ι</li>
+                            <li id="signosIMayus" class="ocultar-signos">
+                                <ul class="fila signos-ocultos">   
+                                    <li class="caracter-especial">Ὶ</li>
+                                    <li class="caracter-especial">Ί</li>
+                                    <li class="caracter-especial">Ἰ</li>
+                                    <li class="caracter-especial">Ἲ</li>
+                                    <li class="caracter-especial">Ἴ</li>
+                                    <li class="caracter-especial">Ἶ</li>
+                                    <li class="caracter-especial">Ἱ</li>
+                                    <li class="caracter-especial">Ἳ</li>
+                                    <li class="caracter-especial">Ἵ</li>
+                                    <li class="caracter-especial">Ἷ</li>
+                                    <li class="caracter-especial">Ῐ</li>
+                                    <li class="caracter-especial">Ῑ</li>
+                                </ul>
+                            </li>
                             <li class="letra-griega">ι</li>
+                            <li id="signosI" class="ocultar-signos">
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">ὶ</li>
+                                    <li class="caracter-especial">ί</li>
+                                    <li class="caracter-especial">ἰ</li>
+                                    <li class="caracter-especial">ἲ</li>
+                                    <li class="caracter-especial">ἴ</li>
+                                    <li class="caracter-especial">ἶ</li>
+                                    <li class="caracter-especial">ῖ</li>
+                                    <li class="caracter-especial">ἱ</li>
+                                    <li class="caracter-especial">ἳ</li>
+                                </ul>
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">ἵ</li>
+                                    <li class="caracter-especial">ἷ</li>    
+                                    <li class="caracter-especial">ῐ</li>
+                                    <li class="caracter-especial">ῒ</li>
+                                    <li class="caracter-especial">ϊ</li>
+                                    <li class="caracter-especial">ῑ</li>
+                                    <li class="caracter-especial">ΐ</li>
+                                    <li class="caracter-especial">ῗ</li>
+                                </ul>
+                            </li>
                             <li class="letra-griega">Κ</li>
                             <li class="letra-griega">κ</li>
                         </ul>
@@ -98,7 +287,31 @@
                             <li class="letra-griega">Ξ</li>
                             <li class="letra-griega">ξ</li>
                             <li class="letra-griega">Ο</li>
+                            <li id="signosOMayus" class="ocultar-signos">
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">Ὸ</li>
+                                    <li class="caracter-especial">Ό</li>
+                                    <li class="caracter-especial">Ὀ</li>
+                                    <li class="caracter-especial">Ὂ</li>
+                                    <li class="caracter-especial">Ὄ</li>
+                                    <li class="caracter-especial">Ὁ</li>
+                                    <li class="caracter-especial">Ὃ</li>
+                                    <li class="caracter-especial">Ὅ</li>
+                                </ul>
+                            </li>
                             <li class="letra-griega">ο</li>
+                            <li id="signosO" class="ocultar-signos">
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">ὸ</li>
+                                    <li class="caracter-especial">ό</li>
+                                    <li class="caracter-especial">ὀ</li>
+                                    <li class="caracter-especial">ὂ</li>
+                                    <li class="caracter-especial">ὄ</li>
+                                    <li class="caracter-especial">ὁ</li>
+                                    <li class="caracter-especial">ὃ</li>
+                                    <li class="caracter-especial">ὅ</li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -106,7 +319,18 @@
                             <li class="letra-griega">Π</li>
                             <li class="letra-griega">π</li>
                             <li class="letra-griega">Ρ</li>
+                            <li id="signosPMayus" class="ocultar-signos">
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">Ῥ</li>
+                                </ul>
+                            </li>
                             <li class="letra-griega">ρ</li>
+                            <li id="signosP" class="ocultar-signos">
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">ῥ</li>
+                                    <li class="caracter-especial">ῤ</li>
+                                </ul>
+                            </li>
                             <li class="letra-griega">Σ</li>
                             <li class="letra-griega">σ</li>
                             <li class="letra-griega">ς</li>
@@ -117,7 +341,43 @@
                     <li>
                         <ul class="fila">
                             <li class="letra-griega">Υ</li>
+                            <li id="signosYMayus" class="ocultar-signos">
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">Ὺ</li>
+                                    <li class="caracter-especial">Ύ</li>
+                                    <li class="caracter-especial">Ὑ</li>
+                                    <li class="caracter-especial">Ὓ</li>
+                                    <li class="caracter-especial">Ὕ</li>
+                                    <li class="caracter-especial">Ὗ</li>
+                                    <li class="caracter-especial">Ῠ</li>
+                                    <li class="caracter-especial">Ῡ</li>
+                                    <li class="caracter-especial">Ϋ</li>
+                                </ul>
+                            </li>
                             <li class="letra-griega">υ</li>
+                            <li id="signosU" class="ocultar-signos">
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">ὺ</li>
+                                    <li class="caracter-especial">ύ</li>
+                                    <li class="caracter-especial">ὐ</li>
+                                    <li class="caracter-especial">ὒ</li>
+                                    <li class="caracter-especial">ὔ</li>
+                                    <li class="caracter-especial">ὖ</li>
+                                    <li class="caracter-especial">ῦ</li>
+                                    <li class="caracter-especial">ὑ</li>
+                                    <li class="caracter-especial">ὓ</li>
+                                </ul>
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">ὕ</li>
+                                    <li class="caracter-especial">ὗ</li>
+                                    <li class="caracter-especial">ῠ</li>
+                                    <li class="caracter-especial">ῢ</li>
+                                    <li class="caracter-especial">ϋ</li>
+                                    <li class="caracter-especial">ῡ</li>
+                                    <li class="caracter-especial">ΰ</li>
+                                    <li class="caracter-especial">ῧ</li>
+                                </ul>
+                            </li>
                             <li class="letra-griega">Φ</li>
                             <li class="letra-griega">φ</li>
                             <li class="letra-griega">Χ</li>
@@ -125,25 +385,66 @@
                             <li class="letra-griega">Ψ</li>
                             <li class="letra-griega">ψ</li>
                             <li class="letra-griega">Ω</li>
+                            <li id="signosWMayus" class="ocultar-signos">
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">Ὼ</li>
+                                    <li class="caracter-especial">Ώ</li>
+                                    <li class="caracter-especial">Ὠ</li>
+                                    <li class="caracter-especial">ᾨ</li>
+                                    <li class="caracter-especial">Ὢ</li>
+                                    <li class="caracter-especial">ᾪ</li>
+                                    <li class="caracter-especial">Ὤ</li>
+                                    <li class="caracter-especial">ᾬ</li>
+                                    <li class="caracter-especial">Ὦ</li>
+                                </ul>
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">ᾮ</li>
+                                    <li class="caracter-especial">ῼ</li>
+                                    <li class="caracter-especial">Ὡ</li> 
+                                    <li class="caracter-especial">ᾩ</li>
+                                    <li class="caracter-especial">Ὣ</li>
+                                    <li class="caracter-especial">ᾫ</li>
+                                    <li class="caracter-especial">Ὥ</li>
+                                    <li class="caracter-especial">ᾭ</li>
+                                </ul>
+                            </li>
                             <li class="letra-griega">ω</li>
+                            <li id="signosW" class="ocultar-signos">
+                                <ul class="fila signos-ocultos">
+                                    <li class="caracter-especial">ὼ</li>
+                                    <li class="caracter-especial">ῲ</li>
+                                    <li class="caracter-especial">ώ</li>
+                                    <li class="caracter-especial">ῴ</li>
+                                    <li class="caracter-especial">ὠ</li>
+                                    <li class="caracter-especial">ᾠ</li>
+                                    <li class="caracter-especial">ὢ</li>
+                                    <li class="caracter-especial">ᾢ</li>
+                                    <li class="caracter-especial">ὤ</li>
+                                    <li class="caracter-especial">ᾤ</li>
+                                    <li class="caracter-especial">ὦ</li>
+                                    <li class="caracter-especial">ᾦ</li>
+                                </ul>
+                                <ul class="fila signos-ocultos"> 
+                                    <li class="caracter-especial">ῳ</li>
+                                    <li class="caracter-especial">ῶ</li>
+                                    <li class="caracter-especial">ῷ</li>
+                                    <li class="caracter-especial">ὡ</li>
+                                    <li class="caracter-especial">ᾡ</li>
+                                    <li class="caracter-especial">ὣ</li>
+                                    <li class="caracter-especial">ᾣ</li>
+                                    <li class="caracter-especial">ὥ</li>
+                                    <li class="caracter-especial">ᾥ</li>
+                                    <li class="caracter-especial">ὧ</li>
+                                    <li class="caracter-especial">ᾧ</li>
+                                </ul>
+                            </li>
                         </ul>
                     </li>
-                    <li>
-                        <ul class="fila">
-                            <li class="signos">´</li>
-                            <li class="signos">`</li>
-                            <li class="signos">¨</li>
-                            <li class="signos">^</li>
-                            <li class="signos">~</li>
-                            <li class="signos">'</li>
-                            <li class="signos">°</li>
-                        </ul>
-                    </li>
-                    
-                    
+    
                 </ul>
                 <hr>
             </li>
+
             <li>
                 <button type="button" id="eliminar">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
@@ -191,6 +492,8 @@
     </nav>
     <div></div>
 
+    <!-- SECTOR HOJA -->
+
     <div id="container">
         <form>
             <input type="text" id="input" required>
@@ -204,10 +507,10 @@
          </section>
     </div>
 
+    <!-- TUTORIAL -->
+
    <div id="fondoOscuro">
-       <!-- <button id="cerrarTutorial">
-           x
-       </button> -->
+       
         <div class="tutorial muestra-insertarOracion">
             <h4>Insertar nuevas oraciones<button class="cerrarTutorial" title="Cerrar tutorial">x</button></h4>
             <p>Escribir la oracion que se quiere estudiar y presionar "Analizar" para agregarla a la hoja.</p>
