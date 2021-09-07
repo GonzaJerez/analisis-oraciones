@@ -12,6 +12,8 @@ let oracionesEnPantalla;
 let botonesEliminarOracion;
 let botonesEliminarElemento;
 let botonElementoApretado= true;
+let botonElementoApretado2= true;
+let spanElementos;
 
 let textoSeleccionado;
 let elementoPadreArticle;
@@ -33,6 +35,7 @@ const mostrarOraciones= ()=>{
     /* recorre array general y va creando elementos html por cada oracion q haya creada */
     arrayOraciones.forEach(element=>{
         let li = document.createElement('LI');
+        li.classList.add('li-oracion')
         let article = document.createElement('ARTICLE');
         let nuevoInput = document.createElement('INPUT');
         let nuevoBoton = document.createElement('BUTTON');
@@ -61,7 +64,6 @@ const mostrarOraciones= ()=>{
                 let botonEliminarSpan= document.createElement('button')
                 botonEliminarSpan.textContent= 'x';
                 botonEliminarSpan.classList.add('boton-eliminarElemento');
-                let arranque;
                 span.style.width= `${index.cantidadPixeles}px`;
 
                 if (body.firstElementChild != container ) {
@@ -77,21 +79,55 @@ const mostrarOraciones= ()=>{
                     span.classList.add('segundosElementos')
                 }else if(index.elementosInternos == 2){
                     span.classList.add('tercerosElementos')
+                }else if(index.elementosInternos == 3){
+                    span.classList.add('cuartosElementos')
                 }
                 span.appendChild(botonEliminarSpan)
                 document.getElementById('oracion'+element.oracion).parentElement.appendChild(span)
             })
         }
+        /* acomodar el span de tipo oracion ( a la derecha de la oracion ) */
+        if (element.tipoOracion != undefined && element.tipoOracion != '') {
+  
+            let span = document.createElement('SPAN');
+            let botonEliminarSpan= document.createElement('button')
+            botonEliminarSpan.textContent= 'x';
+            botonEliminarSpan.classList.add('boton-eliminarElemento');
+
+            if (body.firstElementChild != container ) {
+                span.style.left= `${element.finOracion+5}px`;
+            }else{
+                span.style.left= `${element.finOracion-window.screen.availWidth*0.197}px`;
+            }
+            span.textContent= element.tipoOracion;
+            span.setAttribute('id',element.tipoOracion + element.oracion);
+            span.classList.add('tipo-oracion');
+            span.appendChild(botonEliminarSpan)
+            document.getElementById('oracion'+element.oracion).parentElement.appendChild(span)
+           
+        }
+
+        if (element.sujetoDesinencial != undefined && element.sujetoDesinencial != '') {
+            let span = document.createElement('SPAN');
+            let botonEliminarSpan= document.createElement('button')
+            botonEliminarSpan.textContent= 'x';
+            botonEliminarSpan.classList.add('boton-eliminarElemento');
+
+            span.textContent= element.sujetoDesinencial;
+            span.setAttribute('id',element.sujetoDesinencial + element.oracion);
+            span.classList.add('sujeto-desinencial');
+            span.appendChild(botonEliminarSpan)
+            document.getElementById('oracion'+element.oracion).parentElement.appendChild(span)
+        }
 
     })
     /* actualiza la variable "oracionesEnPantalla" para q almacene todas las oraciones q existan ahora y llama a las funciones q permiten seleccionar parte de oraciones
     y borrar oraciones (las activa, porque recien cuando termina esta funcion aparecen los elementos q usan esas funciones) */
-    oracionesEnPantalla = document.querySelectorAll('.sentences')
+    oracionesEnPantalla = document.querySelectorAll('.sentences');
     botonesEliminarOracion = document.querySelectorAll('.boton-eliminarOracion')
     botonesEliminarElemento = document.querySelectorAll('.boton-eliminarElemento')
     borrarOracion();
     borrarElemento();
-    
 }
 
 
@@ -104,7 +140,7 @@ button.addEventListener('click',(e)=>{;
     if (input.value !='' && input.value != ' ') { 
         let oracionNueva= {
             oracion: cantidadOraciones,
-            texto: input.value
+            texto: '[ '+ input.value + ' ]'
         }
         cantidadOraciones++
         arrayOraciones.push(oracionNueva);
@@ -116,9 +152,9 @@ button.addEventListener('click',(e)=>{;
     }
 })
 
-
+let numeroPersona;
+let singPlur;
 // ________ Captura evento de cuando hago click para insertar algun elemento a las oraciones _______
-let listaElementoActual=[];
 botonInsertarElementos.forEach(nomElemento => {
     nomElemento.addEventListener('click',()=>{
         cancelarSeleccion();
@@ -126,6 +162,26 @@ botonInsertarElementos.forEach(nomElemento => {
         if (botonElementoApretado == true) {
             seleccionarParteOraciones()
             botonElementoApretado= false;
+        }
+
+        if (nomElemento.value == 'Sujeto desinencial') {
+            botonSujetoAceptar.addEventListener('click',(e)=>{
+                e.preventDefault();
+                fondoOscuro.style.display = 'none';
+                personaSujetoDesinencial.style.display = 'none';
+                let listaNumeroPersona = document.getElementsByName('numeroPersona');
+                let listaSingPlur = document.getElementsByName('singPlur')
+                listaNumeroPersona.forEach(e=>{
+                    if (e.checked) {
+                        numeroPersona = e.value;
+                    }
+                })
+                listaSingPlur.forEach(e=>{
+                    if (e.checked) {
+                        singPlur = e.value;
+                    }
+                })
+            })
         }
         nomElemento.classList.add('elementoSeleccionado');
         nomElemento.parentElement.classList.add('fondoElementoSeleccionado');
@@ -139,20 +195,23 @@ botonInsertarElementos.forEach(nomElemento => {
 // ________ Captura evento de cuando selecciono algo _______
 /* cuando se selecciona texto almacena: caracter donde arranca, donde termina, el numero de oracion, texto seleccionado, el elemento padre donde se van a agregar
 los elementos del analisis despues, los pixeles donde comienza la seleccion y la cantidad de pixeles seleccionados */
+/* si se selecciona de derecha a izquerda la variable "pixelesSeleccionados" entra valiendo 0 y esta funcion no se ejecuta */
 let seleccionarParteOraciones = ()=>{
 
     setTimeout(()=>{
         
         oracionesEnPantalla.forEach(element=>{
             element.addEventListener('select', (e)=>{
+                if (pixelesSeleccionados != 0) { 
                 inicio = e.target.selectionStart;
                 fin = e.target.selectionEnd;
                 numeroOracionActual = e.target.getAttribute('id').substr(7);
                 textoSeleccionado = e.target.value.substr(inicio, (fin-inicio));
                 elementoPadreArticle = e.target.parentElement;
-                seleccionPixelesActual= pixelesSeleccionados;
-                pixelesArranqueActual = pixelesArranque;
-                insertarElementos();
+                    seleccionPixelesActual= pixelesSeleccionados;
+                    pixelesArranqueActual = pixelesArranque;
+                    insertarElementos();
+                }
             })
         })
     },100)
@@ -168,65 +227,88 @@ const insertarElementos = ()=>{
             ultimoElementoSeleccionado = e
         }
     })
-/* creo elemento nuevo con sus atributos */
-    let elemento= {
-        elemento: ultimoElementoSeleccionado.textContent,   // sujeto - predicado - verbo - etc...
-        value: textoSeleccionado.length,                    // cantidad de caracteres seleccionados
-        inicio: inicio,                                     // numero de caracter donde arranca 
-        fin: fin,                                           // numero de caracter donde termina
-        pixelesInicio: pixelesArranqueActual,               // cantidad de pixeles desde la izquierda donde arranca seleccion
-        cantidadPixeles: seleccionPixelesActual,            // cantidad de pixeles seleccionados
-        elementosInternos: 0
-    }
 
-
-/* si todavia no hay elementos en array general creo array de elementos, le agrego el nuevo elemento y agrego el array de elementos al array general */
-    if (arrayOraciones[numeroOracionActual].elementos == undefined) {
-        arrayElementos.push(elemento)
-        arrayOraciones[numeroOracionActual].elementos = arrayElementos;
-        localStorage.setItem('oraciones', JSON.stringify(arrayOraciones))
-/* si ya hay elementos en array general tomo esos elementos, los agrego al array de elementos y agrego nuevo elemento a este array */
-    }else{
-        let yaExiste= false
-        for(let i in arrayOraciones[numeroOracionActual].elementos){
-            if (arrayOraciones[numeroOracionActual].elementos[i].elemento== elemento.elemento) {
-                alert('No es posible agregar, esta oracion ya tiene '+elemento.elemento);
-                yaExiste= true;
-            }else{
-
-                arrayElementos.push(arrayOraciones[numeroOracionActual].elementos[i])
+    if (ultimoElementoSeleccionado.textContent != "Oracion Bimembre" && ultimoElementoSeleccionado.textContent != "Oracion Unimembre" && ultimoElementoSeleccionado.textContent != "Sujeto desinencial") {
+        /* creo elemento nuevo con sus atributos */
+            let elemento= {
+                elemento: ultimoElementoSeleccionado.value,         // sujeto - predicado - verbo - etc...
+                value: textoSeleccionado.length,                    // cantidad de caracteres seleccionados
+                inicio: inicio,                                     // numero de caracter donde arranca 
+                fin: fin,                                           // numero de caracter donde termina
+                pixelesInicio: pixelesArranqueActual,               // cantidad de pixeles desde la izquierda donde arranca seleccion
+                cantidadPixeles: seleccionPixelesActual,            // cantidad de pixeles seleccionados
+                elementosInternos: 0
             }
-        }
-        if (yaExiste== false) {
+        
+        
+        /* si todavia no hay elementos en array general creo array de elementos, le agrego el nuevo elemento y agrego el array de elementos al array general */
+            if (arrayOraciones[numeroOracionActual].elementos == undefined) {
+                arrayElementos.push(elemento)
+                arrayOraciones[numeroOracionActual].elementos = arrayElementos;
+                localStorage.setItem('oraciones', JSON.stringify(arrayOraciones))
+        /* si ya hay elementos en array general tomo esos elementos, los agrego al array de elementos y agrego nuevo elemento a este array */
+            }else{
+                let yaExiste= false
+                for(let i in arrayOraciones[numeroOracionActual].elementos){
+                    if (arrayOraciones[numeroOracionActual].elementos[i].elemento== elemento.elemento) {
+                        alert('No es posible agregar, esta oracion ya tiene '+elemento.elemento);
+                        yaExiste= true;
+                    }else{
+        
+                        arrayElementos.push(arrayOraciones[numeroOracionActual].elementos[i])
+                    }
+                }
+                if (yaExiste== false) {
+                    
+                    arrayElementos.push(elemento)
+            /* ordeno array de elementos por valor ascendente propiedad value */
+                    arrayElementos.sort((a,b)=>{
+                        return (b.value - a.value)
+                    })
+            /* inserto esa array de elementos en array general con todos los objetos */
+                    arrayOraciones[numeroOracionActual].elementos = arrayElementos;
             
-            arrayElementos.push(elemento)
-    /* ordeno array de elementos por valor ascendente propiedad value */
-            arrayElementos.sort((a,b)=>{
-                return (b.value - a.value)
-            })
-    /* inserto esa array de elementos en array general con todos los objetos */
-            arrayOraciones[numeroOracionActual].elementos = arrayElementos;
-    
-    
-    /* agrego array general al localStorage, reemplazando lo q ya habia por el nuevo array modificado */
-            localStorage.setItem('oraciones', JSON.stringify(arrayOraciones))
-        }
+            
+            /* agrego array general al localStorage, reemplazando lo q ya habia por el nuevo array modificado */
+                    localStorage.setItem('oraciones', JSON.stringify(arrayOraciones))
+                }
+            }
+            
+            /* array elementos vuelve a estar vacio */
+            arrayElementos=[];
+        
+            /* vuelve a dejar activa la funcion de seleccionar texto cuando haga click en elemento a agregar */
+            botonElementoApretado= true;
+        
+            mostrarOraciones();
+            cancelarSeleccion();
     }
-    
-/* array elementos vuelve a estar vacio */
-    arrayElementos=[]
+    else if(ultimoElementoSeleccionado.textContent == "Sujeto desinencial"){
+        /* si inserta elemento "Sujeto desinencial" del submenu "sujeto" cuando seleccione oracion se inserta dentro de array */
+        arrayOraciones[numeroOracionActual].sujetoDesinencial = 'Sujeto desinencial: '+ numeroPersona + ' del ' + singPlur;
+        localStorage.setItem('oraciones', JSON.stringify(arrayOraciones));
+        botonElementoApretado= true;
+        cancelarSeleccion();
+        mostrarOraciones();
+    }
 
-    /* vuelve a dejar activa la funcion de seleccionar texto cuando haga click en elemento a agregar */
-    botonElementoApretado= true
-
-    mostrarOraciones();
-    cancelarSeleccion();
+    else{
+        /* si inserta elementos de submenu "oracion" cuando seleccione toda la oracion se agrega el tipo de oracion y los pixeles donde
+            termina la oracion */
+        arrayOraciones[numeroOracionActual].tipoOracion = ultimoElementoSeleccionado.value;
+        arrayOraciones[numeroOracionActual].finOracion = seleccionPixelesActual + pixelesArranqueActual;
+        localStorage.setItem('oraciones', JSON.stringify(arrayOraciones));
+        botonElementoApretado= true;
+        cancelarSeleccion();
+        mostrarOraciones();
+    }
 
 }
 
 
 // _____ MODIFICA PROPIEDAD "elementosInternos" DE LOS ELEMENTOS EN BASE A CANTIDAD DE ELEMENTOS QUE CONTENGAN____________
 /* reinicia todos a 0, va comparando cada elemento con los demas y si contiene uno le agrega margen
+compara otra vez y si contiene alguno q ya contenga otro dentro agrega mas margen,
 compara otra vez y si contiene alguno q ya contenga otro dentro agrega mas margen,
 por ultimo agrega nuevas modificaciones al localStorage */
 const margenesDeElementos= ()=>{
@@ -250,12 +332,19 @@ const margenesDeElementos= ()=>{
                  }
              })
             })
+
+            or.elementos.forEach(n=>{
+                or.elementos.forEach(e=>{
+                    if (n!=e && e.inicio >= n.inicio && e.fin <= n.fin && e.elementosInternos == 2) {
+                        n.elementosInternos=3;
+                    }
+                })
+               })
         }
     })
     localStorage.setItem('oraciones', JSON.stringify(arrayOraciones));
    
 }
-
 
 
 // ___________ ELIMINAR ORACION ENTERA ____________________
@@ -289,14 +378,24 @@ const borrarOracion = ()=>{
 const borrarElemento = ()=>{
     botonesEliminarElemento.forEach(element=>{
         element.addEventListener('click',e=>{
-            let elementoAEliminar = element.parentElement.textContent.substr(0,element.parentElement.textContent.length-1)
-            let indiceElementoAEliminar = element.parentElement.getAttribute('id').substr(elementoAEliminar.length)
+            let elementoAEliminar = element.parentElement.textContent.substr(0,element.parentElement.textContent.length-1);
+            let indiceElementoAEliminar = element.parentElement.getAttribute('id').substr(elementoAEliminar.length);
 
-            for(let i in arrayOraciones[indiceElementoAEliminar].elementos){
-                if(arrayOraciones[indiceElementoAEliminar].elementos[i].elemento == elementoAEliminar){
-                    arrayOraciones[indiceElementoAEliminar].elementos.splice(i,1)[0];
-                };
+            if (elementoAEliminar == "O.B." || elementoAEliminar == "O.U.") {
+                arrayOraciones[indiceElementoAEliminar].tipoOracion = '';
+                arrayOraciones[indiceElementoAEliminar].finOracion = '';
             }
+            else if (elementoAEliminar.startsWith('Sujeto desinencial:')) {
+                arrayOraciones[indiceElementoAEliminar].sujetoDesinencial = '';
+            }
+            else{
+                for(let i in arrayOraciones[indiceElementoAEliminar].elementos){
+                    if(arrayOraciones[indiceElementoAEliminar].elementos[i].elemento == elementoAEliminar){
+                        arrayOraciones[indiceElementoAEliminar].elementos.splice(i,1)[0];
+                    };
+                }
+            }
+
 
             localStorage.setItem('oraciones', JSON.stringify(arrayOraciones));
             cancelarSeleccionEliminar();
@@ -467,6 +566,7 @@ mostrarOraciones()
 
 
 /* _________SECCION QUE ALMACENA LOS PIXELES EN PANTALLA EN EJE X DONDE SE EMPIECE A SELECCIONAR Y DONDE TERMINE_________ */
+/* si se selecciona de derecha a izquierda entonces la variable "pixelesSeleccionados" sale valiendo 0 y la funcion donde se inserta el elemento no se ejecuta despues */
 let pixelesArranque;
 let pixelesTerminacion;
 let pixelesSeleccionados;
@@ -478,5 +578,9 @@ window.addEventListener('mousedown',(e)=>{
 })
 window.addEventListener('mouseup',(e)=>{
     pixelesTerminacion= e.clientX;
-    pixelesSeleccionados = pixelesTerminacion - pixelesArranque;
+    if (pixelesArranque < pixelesTerminacion) {
+        pixelesSeleccionados = pixelesTerminacion - pixelesArranque; 
+    }else{
+        pixelesSeleccionados = 0;
+    }
 })

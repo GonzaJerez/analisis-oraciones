@@ -126,6 +126,9 @@ body{
     width: 100%;
     font-size: 14px;
 }
+#listaElementos > li > button{
+    height: 18px;
+}
 
 #parteOculta > li > button > svg{
     margin-right: 5px;
@@ -151,6 +154,25 @@ body{
     background-color: transparent;
 }
 
+/*  MENSAJE DE AYUDA - guia sobre como usar los elementos */
+.mensajeAyuda{
+    display: none;
+    position: absolute;
+    background-color: #e0e0e0f0;
+    color: #000000 !important;
+    padding: 5px;
+    border-radius: 3px;
+    box-shadow: 0px 0px 3px #1a1a1a;
+    z-index: 3;
+    font-size: 10px;
+}
+
+#mostrarListaElementos .mensajeAyuda{
+    width: 108px;
+    height: 54px;
+    margin-left: 138px;
+}
+
 #listaElementos{
     height: 0px;
     overflow: hidden;
@@ -172,12 +194,8 @@ body{
 }
 
 .lista-elementos-visible{
-    height: 220px !important;
+    height: 350px !important;
     padding: 10px 15px !important;
-}
-
-.tambien-circunstanciales{
-    height: 320px !important;
 }
 
 .insertar{
@@ -185,6 +203,8 @@ body{
     background-color: transparent;
 }
 
+
+/* CIRCUNSTANCIALES */
 #parteOculta #botonCircunstanciales{
     width: 100%;
 }
@@ -210,6 +230,120 @@ body{
     flex-direction: column;
 }
 
+.tambien-circunstanciales{
+    height: 450px !important;
+}
+
+
+/* PREDICADO */
+#parteOculta #botonPredicado{
+    width: 100%;
+}
+
+#listaPredicado{
+    height: 0px;
+    overflow: hidden;
+    transition: all 200ms;
+    padding-left: 10px;
+    width: 90%;
+}
+
+.mostrar-predicado{
+    height: 150px !important;
+}
+
+#listaPredicado li{
+    width: 100%;
+}
+
+#liPredicado{
+    display: flex;
+    flex-direction: column;
+}
+
+.tambien-predicado{
+    height: 500px !important;
+}
+
+/* SUJETO */
+
+#parteOculta #botonSujeto{
+    width: 100%;
+}
+
+#listaSujeto{
+    height: 0px;
+    overflow: hidden;
+    transition: all 200ms;
+    padding-left: 10px;
+    width: 90%;
+}
+
+.mostrar-sujeto{
+    height: 80px !important;
+}
+
+#listaSujeto li{
+    width: 100%;
+}
+
+#liSujeto{
+    display: flex;
+    flex-direction: column;
+}
+
+.tambien-sujeto{
+    height: 430px !important;
+}
+
+/* TIPO ORACION */
+
+#parteOculta #botonOracion{
+    width: 100%;
+}
+
+#listaOracion{
+    height: 0px;
+    overflow: hidden;
+    transition: all 200ms;
+    padding-left: 10px;
+    width: 90%;
+}
+
+.mostrar-oracion{
+    height: 75px !important;
+}
+
+#listaOracion li{
+    width: 100%;
+}
+
+#liOracion{
+    display: flex;
+    flex-direction: column;
+}
+
+.tambien-oracion{
+    height: 395px !important;
+}
+
+/* AJUSTE MENSAJE DE AYUDA DEPENDIENDO DE UBICACION DE CADA UNO */
+#botonSujetoDesinencial > svg{
+    float: right;
+    padding-top: 3px;
+}
+
+#botonSujetoDesinencial .mensajeAyuda{
+    width: 108px;
+    height: 105px;
+    margin-left: 121px;
+}
+
+#botonOracion > .mensajeAyuda{
+    width: 108px;
+    height: 55px;
+    margin-left: 110px;
+}
 
 #botonDiccionarioGriego{
     border: none;
@@ -269,6 +403,7 @@ body{
     display: block !important;
 }
 
+/* AJUSTE DE POSICION DE CADA FILA CARACTERES OCULTOS */
 #signosA{
     margin-top: -55px;
 }
@@ -402,12 +537,6 @@ body{
     float: left;
 }
 
-#iconoInfo{
-    float: right;
-    transform: rotate(0deg) !important;
-    cursor: help !important;
-}
-
 #guardarComoPdf:hover{
     cursor: pointer;
 }
@@ -433,6 +562,30 @@ body{
     #parteVisible{
         width: 48px;
     }
+    .lista-elementos-visible{
+        height: 375px !important;
+    }
+    .mostrar-sujeto {
+        height: 90px !important;
+    }
+    .tambien-sujeto {
+        height: 465px !important;
+    }
+    .mostrar-predicado{
+        height: 165px !important;
+    }
+    .tambien-predicado{
+        height: 540px !important;
+    }
+    .tambien-circunstanciales{
+        height: 475px !important;
+    }
+    .mostrar-oracion{
+        height: 90px !important;
+    }
+    .tambien-oracion{
+        height: 455px !important;
+    }
 }
 @media(max-width: 1150px){
     #menu{
@@ -442,6 +595,7 @@ body{
         width: 45px;
     }
 }
+
 
 /* ___________________ CONTAINER ________________________ */
 
@@ -540,15 +694,45 @@ body{
     z-index: 3;
 }
 
+#container section .tipo-oracion{
+    border: none;
+    width: 50px;
+    line-height: 12px;
+    margin-top: 8px;
+    font-weight: bold;
+    text-align: left;
+    color: #353535;
+    font-size: 18px;
+}
+
+#container section .sujeto-desinencial{
+    width: 190px;
+    margin-top: -12px;
+    border-bottom: transparent;
+    border-right: transparent;
+    line-height: 0px;
+    padding-bottom: 10px;
+    padding-left: 3px;
+    margin-left: 5px;
+    font-style: italic;
+    text-align: left;
+}
+
 .segundosElementos{
     height: 20px !important;
     line-height: 55px !important;
-    z-index: 2 !important;
+    z-index: 3 !important;
 }
 
 .tercerosElementos{
     height: 40px !important;
     line-height: 100px !important;
+    z-index: 2 !important;
+}
+
+.cuartosElementos{
+    height: 60px !important;
+    line-height: 145px !important;
     z-index: 1 !important;
 }
 
@@ -694,4 +878,62 @@ body{
 #fondoOscuro .muestra-guardar{
     left: 20%;
     top: 200px;
+}
+
+#personaSujetoDesinencial{
+    width: 500px;
+    height: 280px;
+    text-align: center;
+    background-color: #f1f1f1;
+    position: absolute;
+    top: 30%;
+    left: 35%;
+    border-radius: 5px;
+    display: none;
+    animation: sujeto 300ms ease;
+}
+
+#personaSujetoDesinencial h4{
+    padding: 20px;
+    background-color: #ccc;
+}
+
+#personaSujetoDesinencial form input{
+    margin: 0px 5px 0px 20px;
+}
+
+#personaSujetoDesinencial .radio{
+    margin: 10px 0px;
+}
+
+#personaSujetoDesinencial .radio:first-child{
+    margin: 30px 0px;
+}
+
+#personaSujetoDesinencial .botones{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#personaSujetoDesinencial .botones button{
+    background-color: #0d6efd;
+    color: #f1f1f1;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#personaSujetoDesinencial .botones button:hover{
+    background-color: #0d6dfdab;
+    cursor: pointer;
+}
+
+@keyframes sujeto{
+    0%{
+        transform: translateY(-500%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
 }

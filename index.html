@@ -40,27 +40,71 @@
                         <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3h9.05zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8h2.05zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1h9.05z"/>
                       </svg>
                     Lista elementos 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                            <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                        </svg>
+                        <div class="mensajeAyuda">Primero selegir elemento, despues seleccionar parte de la oracion</div>
                     <span class="girar-icono">▼</span>
                 </button>
                 
                 <ul id="listaElementos" class="lista-elementos-visible lista-interna" style="height: 0px;">
-                    <li><button class="insertar">Sujeto</button><span class="cancelar elemento0">v</span></li>
-                    <li><button class="insertar">Predicado</button><span class="cancelar elemento1">v</span></li>
-                    <li><button class="insertar">Verbo</button><span class="cancelar elemento2">v</span></li>
-                    <li><button class="insertar">Sustantivo</button><span class="cancelar elemento3">v</span></li>
-                    <li><button class="insertar">Adjetivo</button><span class="cancelar elemento4">v</span></li>
-                    <li><button class="insertar">Articulo</button><span class="cancelar elemento5">v</span></li>
+                    <li id="liSujeto">
+                        <button id="botonSujeto">Sujeto<span class="">▼</span></button>
+                        <ul id="listaSujeto">
+                            <li><button class="insertar" value="Sujeto simple">Sujeto simple</button><span class="cancelar elemento1">v</span></li>
+                            <li><button class="insertar" id="botonSujetoDesinencial" value="Sujeto desinencial">Sujeto desinencial
+                                <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                    <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                </svg>
+                                <div class="mensajeAyuda">Al seleccionar se abre una ventana emergente para elegir el sujeto desinencial. Despues de elegir el sujeto seleccionar cualquier parte de la oracion donde se desea insertar</div>
+                            </button><span class="cancelar elemento2">v</span></li>
+                            <li><button class="insertar" value="Sujeto">Sujeto</button><span class="cancelar elemento3">v</span></li>
+                        </ul>
+                    </li>
+                    <li id="liPredicado">
+                        <button id="botonPredicado">Predicado<span class="">▼</span></button>
+                        <ul id="listaPredicado">
+                            <li><button class="insertar" value="P.V.S">Predicado Verbal Simple</button><span class="cancelar elemento4">v</span></li>
+                            <li><button class="insertar" value="P.V.C.">Predicado Verbal Compuesto</button><span class="cancelar elemento5">v</span></li>
+                            <li><button class="insertar" value="P.N.V">Predicado No Verbal</button><span class="cancelar elemento6">v</span></li>
+                            <li><button class="insertar" value="Predicado">Predicado</button><span class="cancelar elemento7">v</span></li>
+                        </ul>
+                    </li>
+                    <li><button class="insertar" value="Verbo">Verbo</button><span class="cancelar elemento8">v</span></li>
+                    <li><button class="insertar" value="Sust">Sustantivo</button><span class="cancelar elemento9">v</span></li>
+                    <li><button class="insertar" value="Adj">Adjetivo</button><span class="cancelar elemento10">v</span></li>
+                    <li><button class="insertar" value="Art">Articulo</button><span class="cancelar elemento11">v</span></li>
                     <li id="liCircunstancial">
                         <button id="botonCircunstanciales">Circunstanciales<span class="">▼</span></button>
                         <ul id="listaCircunstanciales">
-                            <li><button class="insertar">C. modo</button><span class="cancelar elemento8">v</span></li>
-                            <li><button class="insertar">C. tiempo</button><span class="cancelar elemento9">v</span></li>
-                            <li><button class="insertar">C. lugar</button><span class="cancelar elemento10">v</span></li>
-                            <li><button class="insertar">C. cantidad</button><span class="cancelar elemento11">v</span></li>
+                            <li><button class="insertar" value="C.Modo">C. modo</button><span class="cancelar elemento12">v</span></li>
+                            <li><button class="insertar" value="C.Tiempo">C. tiempo</button><span class="cancelar elemento13">v</span></li>
+                            <li><button class="insertar" value="C.Lugar">C. lugar</button><span class="cancelar elemento14">v</span></li>
+                            <li><button class="insertar" value="C.Cant">C. cantidad</button><span class="cancelar elemento15">v</span></li>
                         </ul>
                     </li>
-                    <li><button class="insertar">O. directo</button><span class="cancelar elemento6">v</span></li>
-                    <li><button class="insertar">O. indirecto</button><span class="cancelar elemento7">v</span></li>
+                    <li><button class="insertar" value="O.D.">O. directo</button><span class="cancelar elemento16">v</span></li>
+                    <li><button class="insertar" value="O.I.">O. indirecto</button><span class="cancelar elemento17">v</span></li>
+                    <li><button class="insertar" value="N">Nucleo</button><span class="cancelar elemento18">v</span></li>
+                    <li><button class="insertar" value="N/S">Nexo Subordinante</button><span class="cancelar elemento19">v</span></li>
+                    <li><button class="insertar" value="N/C">Nexo Coordinante</button><span class="cancelar elemento20">v</span></li>
+                    <li><button class="insertar" value="MD">Modificador Directo</button><span class="cancelar elemento21">v</span></li>
+                    <li><button class="insertar" value="T">Término</button><span class="cancelar elemento22">v</span></li>
+                    <li id="liOracion">
+                        <button id="botonOracion">Tipo de oracion
+                            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="currentColor" class="bi bi-info-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                            </svg>
+                            <div class="mensajeAyuda">Seleccionar elemento y luego seleccionar oracion completa donde se desea insertar</div>
+                            <span class="">▼</span></button>
+                        <ul id="listaOracion">
+                            <li><button class="insertar" value="O.B.">Oracion Bimembre</button><span class="cancelar elemento23">v</span></li>
+                            <li><button class="insertar" value="O.U.">Oracion Unimembre</button><span class="cancelar elemento24">v</span></li>
+                        </ul>
+                    </li>
                 </ul>
             </li>
             
@@ -545,6 +589,28 @@
             <h4>Guardar<button class="cerrarTutorial" title="Cerrar tutorial">x</button></h4>
             <p>Puede guardar la hoja de estudio en formato PDF. Revisar que las propiedades de guardaro esten ajustadas correctamente (comparar con imagen).</p>
             <button>Siguiente</button>
+        </div>
+
+        <!-- modal cuando selecciona "Sujeto decinencial" en submenu "sujeto" -->
+        <div id="personaSujetoDesinencial">
+            <h4>Elegir sujeto</h4>
+            <hr>
+            <form>
+                <div class="radio">
+                    <input type="radio" name="numeroPersona" value="1ra persona" checked>1ra persona
+                    <input type="radio" name="numeroPersona" value="2da persona">2da persona
+                    <input type="radio" name="numeroPersona" value="3ra persona">3ra persona
+                </div>
+                <br>
+                <div class="radio">
+                    <input type="radio" name="singPlur" value="Singular" checked>Singular
+                    <input type="radio" name="singPlur" value="Plural">Plural
+                </div>
+                <div class="botones">
+                    <button value="aceptar" id="sujetoAceptar">Aceptar</button>
+                    <button value="cancelar" id="sujetoCancelar">Cancelar</button>
+                </div>
+            </form>
         </div>
    </div>
     
