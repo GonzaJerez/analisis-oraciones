@@ -228,7 +228,7 @@ const insertarElementos = ()=>{
         }
     })
 
-    if (ultimoElementoSeleccionado.textContent != "Oracion Bimembre" && ultimoElementoSeleccionado.textContent != "Oracion Unimembre" && ultimoElementoSeleccionado.textContent != "Sujeto desinencial") {
+    if (ultimoElementoSeleccionado.textContent != "Oracion Bimembre" && ultimoElementoSeleccionado.textContent != "Oracion Unimembre" && ultimoElementoSeleccionado.value != "Sujeto desinencial") {
         /* creo elemento nuevo con sus atributos */
             let elemento= {
                 elemento: ultimoElementoSeleccionado.value,         // sujeto - predicado - verbo - etc...
@@ -283,7 +283,7 @@ const insertarElementos = ()=>{
             mostrarOraciones();
             cancelarSeleccion();
     }
-    else if(ultimoElementoSeleccionado.textContent == "Sujeto desinencial"){
+    else if(ultimoElementoSeleccionado.value == "Sujeto desinencial"){
         /* si inserta elemento "Sujeto desinencial" del submenu "sujeto" cuando seleccione oracion se inserta dentro de array */
         arrayOraciones[numeroOracionActual].sujetoDesinencial = 'Sujeto desinencial: '+ numeroPersona + ' del ' + singPlur;
         localStorage.setItem('oraciones', JSON.stringify(arrayOraciones));
@@ -479,12 +479,12 @@ window.addEventListener('load',()=>{
         section.style.zIndex= '-1';
         muestraInsertarOracion.style.display= 'block';
         muestraInsertarOracion.style.opacity= '1';
-        formulario.style.zIndex= '3';
+        formulario.style.zIndex= '4';
 
         muestraInsertarOracion.lastElementChild.addEventListener('click',()=>{
             muestraListaElementos.style.display= 'block';
             muestraInsertarOracion.style.opacity= '0';
-            menu.style.zIndex= '3';
+            menu.style.zIndex= '4';
             setTimeout(()=>{
                 muestraInsertarOracion.style.display= 'none';  
                 muestraListaElementos.style.opacity= '1';
@@ -527,6 +527,8 @@ window.addEventListener('load',()=>{
             })
         })
         muestraHojaEstudio.lastElementChild.addEventListener('click',()=>{
+            muestraHojaEstudio.style.opacity = '0';
+            muestraHojaEstudio.style.display = 'none';
             fondoOscuro.style.display= 'none';
             section.style.zIndex= '0';
         })
@@ -538,6 +540,10 @@ window.addEventListener('load',()=>{
 
 cerrarTutorial.forEach(e=>{
     e.addEventListener('click',()=>{
+        document.querySelectorAll('.tutorial').forEach(element =>{
+            element.style.opacity = '0';
+            element.style.display = 'none';
+        })
         fondoOscuro.style.display= 'none';
         section.style.zIndex= '0';
     })
