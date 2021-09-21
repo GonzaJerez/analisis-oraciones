@@ -224,7 +224,7 @@ const insertarElementos = ()=>{
     let ultimoElementoSeleccionado;
     botonInsertarElementos.forEach(e=>{
         if (e.classList.contains('elementoSeleccionado')) {
-            ultimoElementoSeleccionado = e;
+            ultimoElementoSeleccionado = e
         }
     })
 
