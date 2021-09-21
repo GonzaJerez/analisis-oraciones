@@ -224,11 +224,11 @@ const insertarElementos = ()=>{
     let ultimoElementoSeleccionado;
     botonInsertarElementos.forEach(e=>{
         if (e.classList.contains('elementoSeleccionado')) {
-            ultimoElementoSeleccionado = e
+            ultimoElementoSeleccionado = e;
         }
     })
 
-    if (ultimoElementoSeleccionado.textContent != "Oracion Bimembre" && ultimoElementoSeleccionado.textContent != "Oracion Unimembre" && ultimoElementoSeleccionado.textContent != "Sujeto desinencial") {
+    if (ultimoElementoSeleccionado.textContent != "Oracion Bimembre" && ultimoElementoSeleccionado.textContent != "Oracion Unimembre" && ultimoElementoSeleccionado.value != "Sujeto desinencial") {
         /* creo elemento nuevo con sus atributos */
             let elemento= {
                 elemento: ultimoElementoSeleccionado.value,         // sujeto - predicado - verbo - etc...
@@ -283,7 +283,7 @@ const insertarElementos = ()=>{
             mostrarOraciones();
             cancelarSeleccion();
     }
-    else if(ultimoElementoSeleccionado.textContent == "Sujeto desinencial"){
+    else if(ultimoElementoSeleccionado.value == "Sujeto desinencial"){
         /* si inserta elemento "Sujeto desinencial" del submenu "sujeto" cuando seleccione oracion se inserta dentro de array */
         arrayOraciones[numeroOracionActual].sujetoDesinencial = 'Sujeto desinencial: '+ numeroPersona + ' del ' + singPlur;
         localStorage.setItem('oraciones', JSON.stringify(arrayOraciones));

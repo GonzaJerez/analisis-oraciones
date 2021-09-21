@@ -620,29 +620,6 @@ body{
     margin-top: 20px;
 }
 
-#container section{
-    padding: 0px 30px;
-    background-color: white;
-    box-shadow: 0px 0px 25px gray;
-    min-height: 100vh;
-    cursor: crosshair;
-}
-
-::marker{
-    font-size: 13px;
-}
-
-#container article{
-    height: 50px;
-    margin-top: 20px;
-    margin-bottom: 80px;
-    text-align: start;
-    width: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-}
-
 #input{
     width: 80%;
     height: 30px;
@@ -675,6 +652,29 @@ body{
     box-shadow: 1px 1px 10px rgb(0 0 0 / 25%);
 }
 
+#container section{
+    padding: 0px 30px;
+    background-color: white;
+    box-shadow: 0px 0px 25px gray;
+    min-height: 100vh;
+    cursor: crosshair;
+}
+
+::marker{
+    font-size: 13px;
+}
+
+#container article{
+    height: 50px;
+    margin-top: 20px;
+    margin-bottom: 80px;
+    text-align: start;
+    width: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 .sentences{
     border:none;
     background-color: transparent;
@@ -684,6 +684,7 @@ body{
     font-size: 15px;
     letter-spacing: 1px;
     cursor: text;
+
 }
 
 #container section span{
